@@ -1,19 +1,22 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Post, Comment } = require("../../models");
+const session = require("express-session");
+const withAuth = require("../../utils/auth");
+const sequelizeStore = require("connect-session-sequelize")(session.Store);
 
 
 //allows user to sign up
-// router.post("/signup", async (req, res) => {
-//   const userData = req.body;
-//   const user = await User.create(req.body);
-//   //can use insomnia to check and will need to post required input from models/user.js
-//   req.session.save(() => {
-//     req.session.user_id = userData.id;
-//     req.session.logged_in = true;
+router.post("/signup", async (req, res) => {
+  const userData = req.body;
+  const user = await User.create(req.body);
+  //can use insomnia to check and will need to post required input from models/user.js
+  req.session.save(() => {
+    req.session.user_id = userData.id;
+    req.session.logged_in = true;
 
-//     res.json({ user: userData, message: "You are now logged in!" });
-//   });
-// });
+    res.json({ user: userData, message: "You are now logged in!" });
+  });
+});
 
 //allows user to login if already has account
 router.post("/login", async (req, res) => {

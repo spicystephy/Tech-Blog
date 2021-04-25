@@ -12,8 +12,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+// new comment posting
 router.post("/", async (req, res) => {
-  // new comment posting
   try {
     const commentData = await Comment.create({
         comment_text: req.body.comment_text,
