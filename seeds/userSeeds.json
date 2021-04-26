@@ -1,21 +1,21 @@
 [
   {
-    "name": "Maeby",
+    "username": "Maeby",
     "email": "maeby@email.com",
     "password": "pw12345"
   },
   {
-    "name": "Tobias",
+    "username": "Tobias",
     "email": "tobias@email.com",
     "password": "pw12345"
   },
   {
-    "name": "Lindsay",
+    "username": "Lindsay",
     "email": "lindsay@email.com",
     "password": "pw12345"
   },
   {
-    "name": "Lucille",
+    "username": "Lucille",
     "email": "lucille@email.com",
     "password": "pw12345"
   }
