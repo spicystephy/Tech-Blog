@@ -4,37 +4,37 @@ const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
 
 //get all posts, sort in descending order
-router.get("/", async (req, res) => {
-  try {
-    const postData = await Post.findAll({
-      attributes: ["id", "post_text", "title", "created_at"],
-      order: [["created_at", "DESC"]],
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-        {
-          model: Comment,
-          attributes: [
-            "id",
-            "comment_text",
-            "post_id",
-            "user_id",
-            "created_at",
-          ],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
-        },
-      ],
-    });
-    res.status(200).json(postData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const postData = await Post.findAll({
+//       attributes: ["id", "post_text", "title", "created_at"],
+//       order: ["created_at", "DESC"],
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["username"],
+//         },
+//         {
+//           model: Comment,
+//           attributes: [
+//             "id",
+//             "comment_text",
+//             "post_id",
+//             "user_id",
+//             "created_at",
+//           ],
+//           include: {
+//             model: User,
+//             attributes: ["username"],
+//           },
+//         },
+//       ],
+//     });
+//     res.status(200).json(postData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 //gets a single post by id
 router.get("/:id", async (req, res) => {
@@ -45,29 +45,22 @@ router.get("/:id", async (req, res) => {
         {
           model: User,
           attributes: ["username"],
-        },
-        {
-          model: Comment,
-          attributes: [
-            "id",
-            "comment_text",
-            "post_id",
-            "user_id",
-            "created_at",
+          include: [
+            {
+              model: Comment,
+              attributes: ["id", "comment_text"],
+              include: {
+                model: User,
+                attributes: ["username"],
+              },
+            },
           ],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
         },
       ],
     });
-    if (!postData) {
-      res.status(404).json({ message: "No post found with that id!" });
-      return;
-    }
-    res.status(200).json(postData);
-  } catch (err) {
+    const post = postData.get({ plain: true });
+    res.render("post", {post, logged_in: req.session.logged_in});
+    } catch (err) {
     res.status(500).json(err);
   }
 });
@@ -92,7 +85,7 @@ router.put("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.update(req.body, {
       where: {
-        id: req.params.id
+        id: req.params.id,
       },
     });
     res.status(200).json(postData);

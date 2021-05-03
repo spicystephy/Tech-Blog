@@ -1,9 +1,9 @@
 {{>post-info post}}
 
 {{#if loggedIn}}
-<form class="comment-form">
+<form class="post-form">
     <div>
-        <textarea name="comment-body"></textarea>
+        <textarea name="post-body"></textarea>
     </div>
 
     <div>
@@ -15,5 +15,5 @@
 {{> comments post.comments}}
 
 {{#if loggedIn}}
-<script src="/javascript/comment.js"></script>
+<script src="/js/post.js"></script>
 {{/if}}
