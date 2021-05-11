@@ -19,14 +19,21 @@ router.get("/", withAuth, async (req, res) => {
 
 //allows user to sign up
 router.post("/signup", async (req, res) => {
-  const userData = await User.create(req.body);
-  //can use insomnia to check and will need to post required input from models/user.js
+  try{
+    const userData = await User.create({
+    username:req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  });
   req.session.save(() => {
     req.session.user_id = userData.id;
     req.session.logged_in = true;
-
     res.json({ user: userData, message: "You are now logged in!" });
   });
+  res.redirect("/")
+  }catch (err){
+    res.status(500).json(err);
+  }
 });
 
 //allows user to login if already has account
