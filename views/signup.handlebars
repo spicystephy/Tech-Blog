@@ -1,17 +1,65 @@
-<form class="signup-form">
+<div class="column signup-form">
+
+    <div>
+        <label class="label">Username</label>
+        <div class="control">
+            <input class="input" type="text" placeholder="Enter a username" id="username-signup">
+        </div>
+    </div>
+
+    <div>
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-danger" type="email" placeholder="Enter Email" id="email-signup">
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+            </span>
+        </div>
+    </div>
+
+    <div>
+        <label class="label">Password</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-danger" type="password" placeholder="Enter Password" id="password-signup">
+            <span class="icon is-small is-left">
+                <i class="fas "></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-link" id="submit-button">Submit</button>
+        </div>
+        <div class="control">
+            <button class="button is-link is-light" type="submit">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/signup.js"></script>
+
+
+{{!-- <form class="signup-form">
     <div>
         <label for="username-signup">Username:</label>
-        <input type="text" id="username-signup"/>
+        <input type="text" id="username-signup" />
     </div>
 
     <div>
         <label for="email-signup">Email:</label>
-        <input type="text" id="email-signup"/>
+        <input type="text" id="email-signup" />
     </div>
 
-     <div>
+    <div>
         <label for="password-signup">Password:</label>
-        <input type="text" id="password-signup"/>
+        <input type="text" id="password-signup" />
     </div>
 
     <div>
@@ -21,4 +69,4 @@
 
 <a href="/login">Login</a>
 
-<script src="/js/signup.js"></script>
+<script src="/js/signup.js"></script> --}}
