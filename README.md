@@ -8,7 +8,7 @@ A site where users can post blogs about the world of technology. Users can edit 
 *Please note this app is still under construction*
 <br>
 ## Heroku Deployment Link
-[Heroku](https://bathroom-buddy-v1.herokuapp.com/)
+[Heroku](https://blog-for-tech.herokuapp.com/)
 
 
 ## Dependencies
