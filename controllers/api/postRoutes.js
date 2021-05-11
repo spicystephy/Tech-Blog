@@ -4,37 +4,37 @@ const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
 
 //get all posts, sort in descending order
-// router.get("/", async (req, res) => {
-//   try {
-//     const postData = await Post.findAll({
-//       attributes: ["id", "post_text", "title", "created_at"],
-//       order: ["created_at", "DESC"],
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["username"],
-//         },
-//         {
-//           model: Comment,
-//           attributes: [
-//             "id",
-//             "comment_text",
-//             "post_id",
-//             "user_id",
-//             "created_at",
-//           ],
-//           include: {
-//             model: User,
-//             attributes: ["username"],
-//           },
-//         },
-//       ],
-//     });
-//     res.status(200).json(postData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.get("/", async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      attributes: ["id", "post_text", "title", "created_at"],
+      order: ["created_at", "DESC"],
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Comment,
+          attributes: [
+            "id",
+            "comment_text",
+            "post_id",
+            "user_id",
+            "created_at",
+          ],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+      ],
+    });
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 //gets a single post by id
 router.get("/:id", async (req, res) => {
