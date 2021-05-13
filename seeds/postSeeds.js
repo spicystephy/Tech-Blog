@@ -27,6 +27,9 @@ const postdata = [
   },
 ];
 
-const posts = () => Post.bulkCreate(postdata);
+const posts = () => await Post.bulkCreate(postdata, {
+  individualHooks: true,
+  returning: true,
+});
 
 module.exports = posts;

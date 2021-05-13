@@ -23,6 +23,9 @@ const commentdata = [
   },
 ];
 
-const comments = () => Comment.bulkCreate(commentdata);
+const comments = () => await Comment.bulkCreate(commentdata, {
+  individualHooks: true,
+  returning: true,
+});
 
 module.exports = comments;

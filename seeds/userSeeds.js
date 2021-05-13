@@ -22,6 +22,9 @@ const userdata = [
     password: "pw12345",
   },
 ];
-const users = () => User.bulkCreate(userdata);
+const users = () => await User.bulkCreate(userdata, {
+  individualHooks: true,
+  returning: true,
+});
 
 module.exports = users;
