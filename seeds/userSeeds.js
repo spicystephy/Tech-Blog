@@ -1,4 +1,4 @@
-const { User } = require("../models");
+// const { User } = require("../models");
 
 const userdata = [
   {
@@ -22,9 +22,9 @@ const userdata = [
     password: "pw12345",
   },
 ];
-const users = () => await User.bulkCreate(userdata, {
-  individualHooks: true,
-  returning: true,
-});
+// const users = () => await User.bulkCreate(userdata, {
+//   individualHooks: true,
+//   returning: true,
+// });
 
-module.exports = users;
+module.exports = userdata;

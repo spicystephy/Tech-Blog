@@ -1,4 +1,4 @@
-const { Post } = require("../models");
+// const { Post } = require("../models");
 
 const postdata = [
   {
@@ -27,9 +27,9 @@ const postdata = [
   },
 ];
 
-const posts = () => await Post.bulkCreate(postdata, {
-  individualHooks: true,
-  returning: true,
-});
+// const posts = () => await Post.bulkCreate(postdata, {
+//   individualHooks: true,
+//   returning: true,
+// });
 
-module.exports = posts;
+module.exports = postdata;

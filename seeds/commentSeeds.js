@@ -1,4 +1,4 @@
-const { Comment } = require("../models");
+// const { Comment } = require("../models");
 
 const commentdata = [
   {
@@ -23,9 +23,9 @@ const commentdata = [
   },
 ];
 
-const comments = () => await Comment.bulkCreate(commentdata, {
-  individualHooks: true,
-  returning: true,
-});
+// const comments = () => await Comment.bulkCreate(commentdata, {
+//   individualHooks: true,
+//   returning: true,
+// });
 
-module.exports = comments;
+module.exports = commentdata;
